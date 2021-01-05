@@ -22,21 +22,21 @@ var animalsWeHave = Object.keys(animalDictionary);
 export default function App() {
   var [userInput, setUserInput] = useState("");
   var [meaning, setMeaning] = useState("");
-
   function inputChangeHandler(event) {
     var userInput = event.target.value;
     setUserInput(userInput);
 
     var meaning = animalDictionary[userInput];
+
     if (meaning === undefined) {
       meaning = "Not Found in our Database";
     }
     setMeaning(meaning);
+  }
 
-    function onClickHandler(emoji) {
-      var meaning = animalDictionary[emoji];
-      setMeaning(meaning);
-    }
+  function onClickHandler(x) {
+    var meaning = animalDictionary[x];
+    setMeaning(meaning);
   }
 
   return (
@@ -61,14 +61,14 @@ export default function App() {
       </div>
 
       <div>
-        <h4>Animals We have in our Database:</h4>
-        {animalsWeHave.map(function (x) {
+        <h4>Emojis we have:</h4>
+        {animalsWeHave.map(function (y) {
           return (
             <span
-              onClick={() => onClickHandler()}
-              style={{ fontSize: "2rem", cursor: "pointer" }}
+              onClick={() => onClickHandler(y)}
+              style={{ fontSize: "2rem", padding: "0.3rem", cursor: "pointer" }}
             >
-              {x}
+              {y}
             </span>
           );
         })}
